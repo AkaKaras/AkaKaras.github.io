@@ -1,0 +1,1209 @@
+{
+	"class": [
+		{
+			"name": "萨满",
+			"ENG_name": "Shaman",
+			"hd": {
+				"number": 1,
+				"faces": 8
+			},
+			"proficiency": [
+				"str",
+				"wis"
+			],
+            "spellcastingAbility": "wis",
+			"casterProgression": "1/2",
+            "cantripProgression": [
+				2,
+				2,
+				2,
+				3,
+				3,
+				3,
+				3,
+				3,
+				3,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4
+			],
+            "spellsKnownProgression": [
+				0,
+				2,
+				3,
+				3,
+				4,
+				4,
+				5,
+				5,
+				6,
+				6,
+				7,
+				7,
+				8,
+				8,
+				9,
+				9,
+				10,
+				10,
+				11,
+				11
+			],
+			"startingProficiencies": {
+				"armor": [
+					"light",
+					"medium",
+					"{@item shield|phb|盾牌}"
+				],
+				"weapons": [
+					"{@item club|phb|棍棒}",
+					"{@item dagger|phb|匕首}",
+					"{@item greatclub|phb|巨棍}",
+					"{@item handaxe|phb|手斧}",
+					"{@item mace|phb|硬头锤}",
+					"{@item quarterstaff|phb|长棍}"
+				],
+				"tools": [
+					"{@item 草药工具|PHB}"
+				],
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"intimidation",
+								"medicine",
+								"nature",
+								"religion",
+								"survival"
+							],
+							"count": 2
+						}
+					}
+				]
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) 一面木制{@item 盾牌|phb} 和 (b)任意一把{@filter 简易近战武器|items|source=phb|category=basic|type=simple weapon;melee weapon=&}",
+					"(a)一把{@item 手斧|phb} 或 (b)任意一把{@filter 简易近战武器|items|source=phb|category=basic|type=simple weapon;melee weapon=&}",
+					"一件{@item 皮甲|phb}、一套{@item 探索者套装|phb}、和一个萨满护符"
+				],
+				"goldAlternative": "{@dice 2d4 × 10|2d4 × 10|起始金钱}",
+				"defaultData": [
+					{
+						"a": [
+							"spear|phb"
+						],
+						"b": [
+							"mace|phb"
+						]
+					},
+					{
+						"a": [
+							"leather armor|phb"
+						],
+						"b": [
+							"studded leather armor|phb"
+						]
+					},
+					{
+						"a": [
+							"light crossbow|phb",
+							"crossbow bolts (20)|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "weaponSimple"
+							}
+						]
+					},
+					{
+						"a": [
+							"scholar's pack|phb"
+						],
+						"b": [
+							"explorer's pack|phb"
+						]
+					}
+				]
+			},
+			"multiclassing": {
+				"requirements": {
+					"wis": 13
+				},
+				"proficienciesGained": {
+					"armor": [
+						"light",
+						"medium",
+						{
+							"proficiency": "{@item shield|phb|盾牌}",
+							"full": "盾牌"
+						}
+					]
+				}
+			},
+			"classTableGroups": [
+                {
+					"colLabels": [
+						"{@filter 已知戏法|spells|level=0|class=Druid}"
+					],
+					"rows": [
+						[
+							2
+						],
+						[
+							2
+						],
+						[
+							2
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						]
+					]
+				},
+				{
+					"title": "法术位/每环",
+					"colLabels": [
+						"{@filter 1环|spells|level=1|class=Ranger}",
+						"{@filter 2环|spells|level=2|class=Ranger}",
+						"{@filter 3环|spells|level=3|class=Ranger}",
+						"{@filter 4环|spells|level=4|class=Ranger}",
+						"{@filter 5环|spells|level=5|class=Ranger}"
+					],
+					"rows": [
+						[
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							2,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							3,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							3,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							2,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							2,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							2,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							2,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							1,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							1,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							2,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							2,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2
+						]
+					]
+				}
+			],
+			"classFeatures": [
+				"战斗风格|Shaman||1",
+                "灵动之行|Shaman||1",
+                "施法|Shaman||2",
+                "图腾附魔|Shaman||2",
+                {
+					"classFeature": "连结元素|Shaman||3",
+					"gainSubclassFeature": true
+				},
+                
+                "属性值提升|Shaman||4",
+                "图腾强化 |Shaman||5",
+                {
+					"classFeature": "连结元素能力|Shaman||6",
+					"gainSubclassFeature": true
+				},
+                "属性值提升|Shaman||8",
+                {
+					"classFeature": "连结元素能力|Shaman||10",
+					"gainSubclassFeature": true
+				},
+                "灵魂之缚|Shaman||10",
+                "图腾强化|Shaman||10",
+                "属性值提升|Shaman||12",
+                {
+					"classFeature": "连结元素能力|Shaman||14",
+					"gainSubclassFeature": true
+				},
+                "元素武器|Shaman||14",
+                "属性值提升|Shaman||16",
+                "元素领主的馈赠|Shaman||18",
+                "图腾附魔强化|Shaman||18",
+                "属性值提升|Shaman||19",
+                "元素大师|Shaman||20"
+			],
+			"subclassTitle": "Elemental Link",
+			"subclasses": [
+				{
+					"name": "烈风呼啸",
+					"ENG_name": "Howling Wind",
+					"shortName": "烈风呼啸",
+					"ENG_shortName": "Wind",
+					"source": "PHB",
+					"page": 102,
+					"srd": true,
+					"subclassFeatures": [
+						"烈风呼啸|Shaman||Wind||3",
+						"烈风呼啸专属图腾|Shaman||Wind||6",
+						"漩涡武器|Shaman||Wind||10",
+						"风暴之盾|Shaman||Wind||14"
+					]
+				}
+			],
+			"fluff": [
+				{
+					"type": "section",
+					"name": "Mystic",
+					"entries": [
+						"A human clad in simple robes walks along a forest path. A gang of goblins emerges from the brush, arrows trained on him, their smiles wide at their good fortune of finding such easy prey for the legion's slave pens. Their smiles turn to shrieks of terror as the traveler grows to giant size and leaps at them, his staff now a deadly cudgel.",
+						"The militia forms in ranks to prepare for the orcs' charge. The growling brutes howl their battle cries and surge forward. To their surprise, the human rabble holds its ground and fights with surprising ferocity. Suddenly, mindless fear clings to the orcs' minds and they, despite facing a far inferior foe, turn and run, never noticing the calm half-elf standing amid the militia and directing its efforts.",
+						"Baron von Ludwig was always proud of his grand library. Little did he know that each evening, a gnome laden with blank scrolls slipped past his guards each night and dutifully copied his most heavily guarded archives. When the duke's men arrived to arrest him for dealing with demons, he never guessed that the gnome scribe traveling with them had spent more time in his keep than he had over the past year.",
+						"These heroes are all mystics, followers of a strange and mysterious form of power. Mystics shun the world to turn their eyes inward, mastering the full potential of their minds and exploring their psyches before turning to face the world. Mystics are incredibly rare, and most prefer to keep the nature of their abilities secret. Using their inner, psychic strength, they can read minds, fade into invisibility, transform their bodies into living iron, and seize control of the physical world and bend it to their will.",
+						{
+							"type": "entries",
+							"name": "Hermits and Outcasts",
+							"entries": [
+								"Mystics are loners. Most discover the secrets of their power through vague references in tomes of lore or by ingratiating themselves to a master of the power.",
+								"In order to master their power, mystics must first master themselves. They spend months and years in quiet contemplation, exploring their minds and leaving nothing uncovered. During this time, they shun society and typically live as hermits at the edge of society. A mystic who studied under a master worked as a virtual slave, toiling away at mundane tasks in return for the occasional lesson or cryptic insight.",
+								"When mystics finally master their power, they return to the world to broaden their horizons and practice their craft. Some mystics prefer to remain isolated, but those who become adventurers aren't content to remain on the fringe of the world."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Eccentric Minds",
+							"entries": [
+								"In order to maintain the strict discipline and intense self-knowledge needed to tap into their power, mystics develop a variety of practices to keep their focus sharp.",
+								"These practices are reflected in taboos and quirks, strange little behaviors that govern a mystic's actions. These quirks are oaths or behavioral tics that help keep mystics in the proper frame of mind while maintaining perfect control over their minds and bodies.",
+								"While these taboos are harmless, they help cast mystics as outsiders. Few feel accepted by society, and fewer still care to become integrated with it. To mystics, the life of the mind is where they feel most at home.",
+								{
+									"type": "entries",
+									"name": "Selecting Quirks",
+									"entries": [
+										"To add some texture to your mystic, consider the quirks your character has acquired. These behaviors have no game effect, but your character might become irritated or upset if forced to break them. They're a great roleplaying tool to add character to the game. You can roll on or pick from the table below, or create your own quirks. Aim to create two quirks, to give them more of a chance to come into play. Finally, consider why your character chose these behaviors. What do they say about your character's personality or background? Are they based on a specific incident or a belief?",
+										{
+											"type": "table",
+											"caption": "Mystic Quirks",
+											"colLabels": [
+												"d20",
+												"Quirk"
+											],
+											"colStyles": [
+												"col-2 text-center",
+												"col-10"
+											],
+											"rows": [
+												[
+													1,
+													"You never cut your hair."
+												],
+												[
+													2,
+													"You refuse to wear clothes of a specific color."
+												],
+												[
+													3,
+													"You never say your name."
+												],
+												[
+													4,
+													"You never wear footwear."
+												],
+												[
+													5,
+													"You always wear a mask."
+												],
+												[
+													6,
+													"You dye your hair bright blue or green."
+												],
+												[
+													7,
+													"You pick a new name each day."
+												],
+												[
+													8,
+													"You never immerse yourself in water."
+												],
+												[
+													9,
+													"You sleep on bare earth."
+												],
+												[
+													10,
+													"You never consume alcohol."
+												],
+												[
+													11,
+													"You wear a veil to conceal your face."
+												],
+												[
+													12,
+													"You always wear a specific piece of clothing."
+												],
+												[
+													13,
+													"You refuse to light fires."
+												],
+												[
+													14,
+													"You refuse to write things down, instead using pictograms."
+												],
+												[
+													15,
+													"You never sit on a chair, preferring to stand or sit on the floor."
+												],
+												[
+													16,
+													"You never answer to any name but your own."
+												],
+												[
+													17,
+													"You write down the name of each creature you slay, and name ones that are unnamed."
+												],
+												[
+													18,
+													"You consume only water and raw vegetables."
+												],
+												[
+													19,
+													"You spend any money you earn within 1 week of gaining it."
+												],
+												[
+													20,
+													"You often speak to an imaginary companion, and act only with its blessing."
+												]
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating a Mystic",
+							"entries": [
+								"When creating a mystic, consider your character's background. How did you become a mystic? What first drew you to this practice? Are you self-taught, or did you have a master? If you had a master, what is that relationship like?",
+								"Consider also why you returned to the world from your hermitage. Did you leave someone or something behind when you took up your studies? Are you driven by revenge or some other motivation?",
+								{
+									"type": "entries",
+									"name": "Quick Build",
+									"entries": [
+										"You can make a mystic quickly by following these suggestions. First, make Intelligence your highest ability score, followed by Dexterity or Constitution. Second, choose the {@background hermit} background."
+									]
+								}
+							]
+						}
+					],
+					"source": "UATheMysticClass",
+					"page": 1
+				}
+			]
+		}
+	],
+	"classFeature": [
+        {
+			"name": "战斗风格",
+			"ENG_name": "Fighting Style",
+			"source": "PHB",
+			"page": 72,
+			"srd": true,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"level": 1,
+			"entries": [
+				"你采用一种特殊的战斗风格以作为你的专业。从下列选项中选择一种。你不能获得相同的战斗风格选项超过一次，即使你有机会再选择它也一样。",
+				{
+					"type": "options",
+					"count": 1,
+					"entries": [
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "防御"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "决斗"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "双武器战斗"
+						}
+						
+					]
+				}
+			]
+		},
+        {
+			"name": "灵动之行",
+			"ENG_name": "Spiritual Journey",
+			"source": "PHB",
+			"page": 72,
+			"srd": true,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"level": 1,
+			"entries": [
+                "1级起，萨满祭司可以消耗一个动作与自然灵魂和进行界限交错，进入灵动之行的状态。在这个状态下，萨满祭司的察觉，洞悉，生存，驯兽，医药技能检定可获得优势。"
+			]
+		},
+        {
+			"name": "施法",
+			"ENG_name": "Spellcasting",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"level": 2,
+			"entries": [
+				"萨满祭司使用自然力量施放法术，凭借他们与元素和神灵的联系。他们使用感知作为施法能力的关键属性（法术豁免DC和法术命中），并依赖自己的萨满祭司等级来决定可以施放的法术等级。",
+				{
+					"type": "entries",
+					"name": "戏法",
+					"entries": [
+						"在1级时，你知晓两个从{@filter 萨满法术列表|spells|class=druid}自选的戏法。你将在升至更高的萨满等级时学会额外的萨满戏法，见萨满表格中的已知戏法字段。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "准备及施放法术",
+					"entries": [
+						"萨满表中显示了你有多少个法术位可以用来施放你一环或更高环的{@filter 萨满法术|spells|class=druid}。要施放其中一个这些萨满法术，你必须消耗一个与该法术环阶相同或更高的法术位。你在完成一次长休后恢复所有你花费掉的法术位。",
+						"2级时，萨满祭司可以准备一定数量的法术，这些法术可以在需要时施放。萨满祭司的法术列表由其萨满祭司等级决定，可以从萨满祭司法术列表中选择适当等级的法术。他们可以准备法术数量等于他们萨满祭司等级加上他们感知修正的总和。",
+						"2级时，萨满祭司获得一定数量的法术槽来施放法术。法术槽数量由他们的萨满祭司等级决定，并显示在萨满祭司等级表中。他们可以在准备法术时将法术填充到这些法术槽中，并在需要时使用。",
+						"你也可以在你完成一次长休时改变你的准备法术列表。准备一份新的萨满法术列表需要花费时间于祈祷和冥想：你需要为你列表上每个法术的每个环阶都花费至少1分钟的时间。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "施法属性",
+					"entries": [
+						"因为你法术的能量源自于你与自然灵魂的链接强度，感知是你施展萨满祭司法术的施法属性。每当一个法术提及你的施法属性时，你将使用你的感知。此外，当决定你萨满祭司法术的豁免DC、以及使用萨满祭司法术进行攻击检定时，你使用你的感知调整值。",
+						{
+							"type": "abilityDc",
+							"name": "法术",
+							"attributes": [
+								"wis"
+							]
+						},
+						{
+							"type": "abilityAttackMod",
+							"name": "法术",
+							"attributes": [
+								"wis"
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "施法法器",
+					"entries": [
+						"你可以使用一个萨满护符，来作为你施放萨满法术的法器。"
+					]
+				}
+			]
+		},
+        {
+			"name": "图腾附魔",
+			"ENG_name": "Totem Enchantment",
+			"source": "PHB",
+			"page": 72,
+			"srd": true,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"level": 2,
+			"entries": [
+				"萨满祭司可以通过雕刻、绘画或制作图腾来附魔它们，赋予盟友和自己特殊的增益效果。图腾可以提供增加护甲、恢复生命值或增强攻击力等效果。相同属性的图腾只可放下一个（注：石肤和石爪不可同时存在，风怒和风之优雅不可同时存在）每个图腾可放置1次，在一次长休后恢复使用次数",
+                "**不同图腾的属性，使用次数可随萨满祭司等级提升而提升**",
+                "通用：",
+                {
+					"type": "list",
+					"items": [
+                        "石肤图腾（Stone Skin Totem）：萨满祭司可消耗一个动作，在60尺范围内放置下一个石肤图腾，影响半径30尺的友军，持续1分钟",
+                        {
+                            "type": "list",
+                            "items": [
+                                "石肤图腾：",
+                                "生命值：20",
+                                "护甲等级（AC）：13"
+                            ]
+                        }
+					]
+				},
+                {
+					"type": "list",
+					"items": [
+                        "石爪图腾（Stone Claw Totem）：萨满祭司可消耗一个动作，在60尺范围内放置下一个石爪图腾，影响半径30尺的敌军，持续1分钟",
+                        {
+                            "type": "list",
+                            "items": [
+                                "石爪图腾:",
+                                "生命值：30",
+                                "护甲等级（AC）：15"
+                            ]
+                        }
+					]
+				}
+			]
+		}, 
+        {
+			"name": "连结元素",
+			"ENG_name": "Elemental Link",
+			"source": "PHB",
+			"page": 72,
+			"srd": true,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"level": 3,
+			"entries": [
+				"在3级时，萨满祭司可以与自然元素建立联系，获得它们的力量。他们可以通过祈祷和仪式召唤元素精灵，以获得辅助或攻击性的效果。你的选择将在3级、6级、10级、和14级时赋予你新的能力。"
+			]
+		},
+        {
+			"name": "属性值提升",
+			"ENG_name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"level": 4,
+			"entries": [
+				"当你在此职业升至4级时，你可以增加一项自选属性值2点，或着你可以增加二项自选属性值各1点。如同平常一样，你不能通过这个能力将一个属性值提升至超过20。",
+				"如果你的DM允许使用专长的话，你也可以改为获得一个{@5etools 专长|feats.html}。"
+			]
+		},
+        {
+			"name": "图腾强化",
+			"ENG_name": "Totem Strengthen",
+			"source": "PHB",
+			"page": 0,
+			"srd": true,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"level": 5,
+			"entries": [
+				"所有图腾在长休之前可放置2次",
+                "通用：",
+				{
+                    "type": "list",
+                    "items": [
+                        "石肤图腾的生命值提升至20，AC提升至14，减伤效果提升至3点",
+                        "石爪图腾的生命值提升至30，AC提升至14",
+						"石肤图腾和石爪图腾影响范围提升至20尺"
+
+                    ]
+                },
+                "烈风：",
+				{
+                    "type": "list",
+                    "items": [
+                        "风怒图腾的基础生命值提升至30，基础AC提升至11",
+                        "风之优雅图腾的基础生命值提升至30，基础AC提升至11"
+
+                    ]
+                },
+                "熔火：",
+				{
+                    "type": "list",
+                    "items": [
+                        "火舌图腾的基础生命值提升至20",
+                        "火焰之怒图腾的基础生命值提升至20"
+                    ]
+                }
+			]
+		},
+        {
+			"name": "连结元素能力",
+			"ENG_name": "Elemental Link feature",
+			"source": "PHB",
+			"page": 0,
+			"srd": true,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"level": 6,
+			"entries": [
+				"在6级时，你获得一个由你连结元素所赋予的能力。"
+			]
+		},
+        {
+			"name": "属性值提升",
+			"ENG_name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 0,
+			"srd": true,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"level": 8,
+			"entries": [
+				"当你在此职业升至8级时，你可以增加一项自选属性值2点，或着你可以增加二项自选属性值各1点。如同平常一样，你不能通过这个能力将一个属性值提升至超过20。",
+				"如果你的DM允许使用专长的话，你也可以改为获得一个{@5etools 专长|feats.html}。"
+			]
+		},
+        {
+			"name": "连结元素能力",
+			"ENG_name": "Elemental Link feature",
+			"source": "PHB",
+			"page": 0,
+			"srd": true,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"level": 10,
+			"entries": [
+				"在10级时，你获得一个由你连结元素所赋予的能力。"
+			]
+		},
+        {
+			"name": "灵魂之缚",
+			"ENG_name": "Soul Bind",
+			"source": "PHB",
+			"page": 0,
+			"srd": true,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"level": 10,
+			"entries": [
+				"萨满祭司可以与灵魂建立联系，并通过与其合作来获得额外的力量。他们可以使用灵魂之缚（Soul Bind）技能，与特定的灵魂进行交流，并从中获取知识、力量或指导。",
+                "每日1次，你可以消耗一个动作呼唤一个合适的自然之魂为你提供如下帮助之一：",
+                {
+                    "type": "list",
+                    "items": [
+                        "立刻恢复你的图腾附魔使用次数",
+                        "恢复你的（等于感知调整值）个法术位，环位不得超过你当前等级的1/3",
+                        "恢复你生命值的一半"
+                    ]
+                }
+			]
+		},
+        {
+			"name": "图腾强化",
+			"ENG_name": "Totem Strengthen",
+			"source": "PHB",
+			"page": 0,
+			"srd": true,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"level": 10,
+			"entries": [
+				"图腾附魔可以在短休后恢复，并且使用3次"
+			]
+		},
+        {
+			"name": "属性值提升",
+			"ENG_name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 0,
+			"srd": true,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"level": 12,
+			"entries": [
+				"当你在此职业升至12级时，你可以增加一项自选属性值2点，或着你可以增加二项自选属性值各1点。如同平常一样，你不能通过这个能力将一个属性值提升至超过20。",
+				"如果你的DM允许使用专长的话，你也可以改为获得一个{@5etools 专长|feats.html}。"
+			]
+		},
+        {
+			"name": "连结元素能力",
+			"ENG_name": "Elemental Link feature",
+			"source": "PHB",
+			"page": 0,
+			"srd": true,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"level": 14,
+			"entries": [
+				
+			]
+		},
+        {
+			"name": "元素武器",
+			"ENG_name": "Elemental Weapon",
+			"source": "PHB",
+			"page": 0,
+			"srd": true,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"level": 14,
+			"entries": [
+				"萨满祭司与自然元素的连接可以将不同于连接元素的自然元素的一部分力量注入他们的武器中，赋予它们额外的伤害属性。他们可以选择将火焰、冰冻、电击或毒素的能量融合到武器上，使攻击更具威力并造成额外效果。",
+                {
+                    "type": "list",
+                    "items": [
+                        "火舌武器：将火焰能量注入武器中，使其具有火焰属性。攻击时，火舌武器可以造成额外的1d8火焰伤害。此外，火焰武器还可能引燃目标，使目标之后每回合持续受到1d8火焰伤害，直到目标消耗1动作扑灭自己身上的火焰。",
+                        "冰齿武器：将冰冻能量注入武器中，使其具有冰冻属性。攻击时，冰齿武器可以造成额外的1d6冰冻伤害。此外，冰齿武器还可能使目标冻结，降低目标10点移动力，可叠加。当目标的移动力被降为0，则目标被冻结在原地（陷入束缚状态）。直到一回合内没有受到冰齿武器攻击后，移动力恢复。",
+                        "电击武器：将闪电能量注入武器中，使其具有电击属性。攻击时，电击武器可以造成额外的1d8电击伤害。此外，电击武器还可能触发电击效果，目标需要过一个等于萨满祭司法术豁免的体质豁免，失败则被电击至目盲与耳聋。",
+                        "雷鸣武器：将雷鸣能量注入武器中，使其具有雷鸣属性。攻击时，雷鸣武器可以造成额外的1d8雷电伤害。此外，雷鸣武器还可以引发雷暴效果，萨满祭司周围5尺范围内会出现雷鸣冲击波，所有受影响的敌方生物需要过一个等于萨满祭司法术豁免的敏捷豁免，失败则被震慑一回合。不管失败还是成功，都将被击退5尺。",
+                        "毒素武器：将毒素能量注入武器中，使其具有毒素属性。攻击时，毒素武器可以造成额外的1d4毒素伤害。被击中的目标需要过一个等于萨满祭司法术豁免的体质豁免，失败则受到额外的，可叠加的1d4毒素伤害并陷入中毒效果。中毒时间内目标无法恢复生命值。"
+                    ]
+                }
+			]
+		},
+        {
+			"name": "属性值提升",
+			"ENG_name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 0,
+			"srd": true,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"level": 16,
+			"entries": [
+				"当你在此职业升至16级时，你可以增加一项自选属性值2点，或着你可以增加二项自选属性值各1点。如同平常一样，你不能通过这个能力将一个属性值提升至超过20。",
+				"如果你的DM允许使用专长的话，你也可以改为获得一个{@5etools 专长|feats.html}。"
+			]
+		},
+        {
+			"name": "元素领主的馈赠",
+			"ENG_name": "Fighting Style",
+			"source": "PHB",
+			"page": 0,
+			"srd": true,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"level": 18,
+			"entries": [
+				"你造成的元素伤害现在可以无视抗性"
+			]
+		},
+        {
+			"name": "图腾附魔强化",
+			"ENG_name": "Fighting Style",
+			"source": "PHB",
+			"page": 0,
+			"srd": true,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"level": 18,
+			"entries": [
+				"通用：",
+				{
+                    "type": "list",
+                    "items": [
+                        "石肤图腾的生命值提升至50，AC提升至17",
+                        "石爪图腾的生命值提升至80，AC提升至18"
+
+                    ]
+                },
+                "烈风：",
+				{
+                    "type": "list",
+                    "items": [
+                        "风怒图腾的基础生命值提升至40，基础AC提升至12",
+                        "风之优雅图腾的基础生命值提升至40，基础AC提升至12"
+
+                    ]
+                },
+                "熔火：",
+				{
+                    "type": "list",
+                    "items": [
+                        "火舌图腾的基础生命值提升至35",
+                        "火焰之怒图腾的基础生命值提升至35"
+                    ]
+                },
+                "萨满祭司的图腾可影响范围提升至40尺"
+			]
+		},
+        {
+			"name": "属性值提升",
+			"ENG_name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 0,
+			"srd": true,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"level": 19,
+			"entries": [
+				"当你在此职业升至19级时，你可以增加一项自选属性值2点，或着你可以增加二项自选属性值各1点。如同平常一样，你不能通过这个能力将一个属性值提升至超过20。",
+				"如果你的DM允许使用专长的话，你也可以改为获得一个{@5etools 专长|feats.html}。"
+			]
+		},{
+			"name": "元素大师",
+			"ENG_name": "Fighting Style",
+			"source": "PHB",
+			"page": 0,
+			"srd": true,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"level": 20,
+			"entries": [
+				"你的图腾附魔使用次数+1，你所有造成的元素伤害的骰子额外增加1个 "
+			]
+		}
+    ],
+	"subclassFeature": [
+		{
+			"name": "烈风呼啸",
+			"ENG_name": "Howling Wind",
+			"source": "PHB",
+			"page": 0,
+			"srd": true,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"subclassShortName": "Wind",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"在大陆上的一个遥远地区，有一个叫做烈风峰的地方，这里是烈风元素的栖息地。在这片地域中，一群富有智慧和力量的萨满祭司与烈风元素建立了特殊的联系。这些萨满祭司受到烈风元素的赐予，获得了强大的风暴之力，被尊称为烈风元素萨满。",
+				{
+					"type": "table",
+					"caption": "烈风呼啸法术",
+					"colLabels": [
+						"萨满等级",
+						"法术"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell 雷鸣波}, {@spell 鸣雷斩}, {@spell 云雾术}, {@spell 羽落术}, {@spell 吸收元素}"
+						],
+						[
+							"5th",
+							"{@spell 造风术}, {@spell 震裂}, {@spell 尘卷风}, {@spell 守护之风}"
+						],
+						[
+							"9th",
+							"{@spell 飞行}, {@spell 气化形态}, {@spell 闪电束}, {@spell 雷霆步}, {@spell 召雷术}"
+						],
+						[
+							"13th",
+							"{@spell 暴风球}, {@spell 元素灾厄}, {@spell 幻景}, {@spell 元素召唤术}"
+						],
+						[
+							"17th",
+							"{@spell 操控风相}"
+						]
+					]
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "额外熟练|Shaman||Wind||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "风怒武器|Shaman||Wind||3"
+				}
+			]
+		},
+		{
+			"name": "风怒武器",
+			"ENG_name": "Windfury Weapon",
+			"source": "PHB",
+			"page": 0,
+			"srd": true,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"subclassShortName": "Wind",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3级烈风呼啸特性}",
+				"在你选择烈风呼啸的3级时，你可以施展风怒武器的能力，在你的武器上注入烈风元素的力量。每次攻击时，有一定几率触发额外的攻击，造成额外的伤害。每一次武器攻击，不管命中与否，骰一个d20，若结果为16-20，则可以立刻发动两次武器攻击，伤害在基础武器伤害上额外+2。伤害数值在你7级时+4，10级时+6，15级时+8。风怒武器每回合只可触发一次，无论是以攻击动作，附赠动作，还是反应进行的攻击。"
+			]
+		},
+		{
+			"name": "额外熟练",
+			"ENG_name": "Bonus Proficiency",
+			"source": "PHB",
+			"page": 0,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"subclassShortName": "Wind",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3级烈风呼啸特性}",
+				"该萨满获得重甲，钉头锤，巨锤，巨斧，连枷，战锤，战斧熟练项。"
+			]
+		},
+		{
+			"name": "烈风呼啸专属图腾",
+			"ENG_name": "Howling Wind Totem",
+			"source": "PHB",
+			"page": 0,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"subclassShortName": "Wind",
+			"subclassSource": "PHB",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6级烈风呼啸特性}",
+				"6级时，你可以召唤风怒图腾或风之优雅图腾，将其放置在战场上。",
+				"萨满祭司可消耗一个动作，在60尺范围内放置下一个风怒图腾，影响半径20尺的友军，持续1分钟",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "风怒图腾|Shaman||Wind||6"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "风之优雅图腾|Shaman||Wind||6"
+				}
+			]
+		},
+		{
+			"name": "风怒图腾",
+			"ENG_name": "Windfury Totem",
+			"source": "PHB",
+			"page": 0,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"subclassShortName": "Wind",
+			"subclassSource": "PHB",
+			"level": 6,
+			"header": 1,
+			"entries": [
+				"{@i 6级烈风呼啸特性}",
+				
+				"风怒图腾将为你的盟友提供额外的攻击机会，使他们的攻击有几率触发额外的攻击。当你的队友攻击无论命中与否，骰一个d20，若结果为16-20，则可以立刻发动一次额外武器攻击，伤害在基础武器伤害上额外+2。伤害数值在你7级时+3，10级时+4，15级时+5。风怒图腾每回合只可触发一次，无论是以攻击动作，附赠动作，还是反应进行的攻击，不会影响萨满祭司本身。",
+				{
+					"type":"list",
+					"items":[
+						"风怒图腾的生命值：20 + 萨满祭司的等级 x 5",
+						"风怒图腾的防御等级（AC）：10 + 萨满祭司熟练加值 + 萨满祭司的感知调整"
+					]
+				}
+			]
+		},
+		{
+			"name": "风之优雅图腾",
+			"ENG_name": "Totem of Graceful Winds",
+			"source": "PHB",
+			"page": 0,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"subclassShortName": "Wind",
+			"subclassSource": "PHB",
+			"level": 6,
+			"header": 1,
+			"entries": [
+				"{@i 6级烈风呼啸特性}",
+				"是萨满祭司的强大图腾之一，它凝聚了风的力量和优雅之道。该图腾可以放置在战场上，为萨满祭司和盟友提供风之恩赐和优雅的加护。",
+				"风之优雅图腾的效果：",
+				"优雅之舞（Graceful Dance）：风之优雅图腾释放出优雅的风之能量，围绕图腾周围形成一个风暴之环。在风暴之环的范围内，所有友方单位的移速+5，并且在移动时无视困难地形的阻碍。",
+				"风之守护（Windswept Guardian）：风之优雅图腾散发出风之守护的力量，为周围的友方单位提供额外的防御。在图腾的范围内，所有友方单位的防御等级（AC）提高+1，并且对来自远程攻击的伤害具有抗性。",
+				{
+					"type":"list",
+					"items":[
+						"风之优雅图腾的生命值：20 + 萨满祭司的等级 x 5",
+						"风之优雅图腾的防御等级（AC）：10 + 萨满祭司熟练加值 + 萨满祭司的感知调整"
+					]
+				}
+			]
+		},
+		{
+			"name": "漩涡武器",
+			"ENG_name": "Maelstrom Weapon",
+			"source": "PHB",
+			"page": 0,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"subclassShortName": "Wind",
+			"subclassSource": "PHB",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10级烈风呼啸特性}",
+				"10级时，通过掌控烈风元素的力量，你的施法也可以变得迅捷如风。每次攻击命中后可以骰一个d20，当结果为1-4时，萨满祭司获得一层漩涡能量。当漩涡能量达到5层时，萨满祭司可以使用反应来释放不超过三环的法术。用这种方式施法次数不能超过感知调整值的次数，在一次长休后恢复使用的次数",
+				"同时，长时间想风元素灌注入武器中战斗的行为使得你的武器充满了法术能量，你可以使用你的武器作为萨满祭司法器"
+			]
+		},
+		{
+			"name": "风暴之盾",
+			"ENG_name": "Storm Shield",
+			"source": "PHB",
+			"page": 0,
+			"className": "Shaman",
+			"classSource": "PHB",
+			"subclassShortName": "Wind",
+			"subclassSource": "PHB",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14级烈风呼啸特性}",
+				"14级时，你可以召唤一个强大的风暴之盾，将其围绕在你周围，提供额外2AC和对雷鸣与闪电的抗性。同时每个近战击中你的目标都会受到2d6的闪电伤害."
+			]
+		}
+	]
+}
