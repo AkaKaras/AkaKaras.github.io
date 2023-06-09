@@ -2,13 +2,27 @@
 Renderer
  */
 
-@import 'vars';
+@import "vars";
 
 $rgb-inset-border: #656565;
 
+:root {
+	--sz-font-h0: 1.8em;
+	--sz-font-h1: 1.5em;
+	--sz-font-h2: 1.35em;
+
+	--h-mb-p: 5px;
+	--h-mb-quote-line: 5px;
+	--h-mb-quote-line-last: 5px;
+	--h-mb-li: 3px;
+	--w-text-indent-inline-p: 0.7em;
+	--w-pl-list: 24px;
+	--w-pl-list-no-bullets: 10px;
+}
+
 @mixin rd__h--large() {
 	color: $rgb-name-red;
-	font-family: 'Andada', serif;
+	font-family: "Times New Roman", serif;
 	font-variant: small-caps;
 	font-weight: 500;
 	display: flex;
@@ -30,7 +44,7 @@ $rgb-inset-border: #656565;
 	&__ {
 		&b {
 			p {
-				margin-bottom: 5px;
+				margin-bottom: var(--h-mb-p);
 			}
 		}
 
@@ -39,7 +53,7 @@ $rgb-inset-border: #656565;
 		&b--2,
 		&b--3,
 		&b--4 {
-			margin-bottom: 5px;
+			margin-bottom: var(--h-mb-p);
 
 			&:last-child {
 				margin-bottom: 0;
@@ -60,22 +74,27 @@ $rgb-inset-border: #656565;
 		}
 
 		&list {
-			margin-top: 5px;
-			margin-bottom: 10px;
-			padding-left: 24px;
+			margin-top: 0;
+			margin-bottom: var(--h-mb-p);
+			padding-left: var(--w-pl-list);
 
-			// FIXME(future) alternately, `&:has(+ .rd__list) { margin-bottom: 0; }` when browser support exists for :has
-			+ .rd__list {
-				margin-top: -5px;
+			> .rd__list:last-child {
+				margin-bottom: 0;
 			}
 
-			> .rd__list {
-				margin-bottom: 0;
+			> .rd__list-name {
+				margin-left: calc(-1 * var(--w-pl-list));
 			}
 		}
 
+		&list-name {
+			margin: 0 0 var(--h-mb-li);
+			font-weight: bold;
+			list-style-type: none;
+		}
+
 		&li {
-			margin-bottom: 5px;
+			margin-bottom: var(--h-mb-p);
 		}
 
 		&compact-stats {
@@ -88,7 +107,7 @@ $rgb-inset-border: #656565;
 
 		&title-link {
 			opacity: 0.3;
-			font-size: 14px;
+			font-size: 12px;
 			font-weight: normal;
 
 			&--inset {
@@ -127,8 +146,10 @@ $rgb-inset-border: #656565;
 
 		&quote {
 			&-line {
+				margin-bottom: var(--h-mb-quote-line);
+
 				&--last {
-					margin-bottom: 5px;
+					margin-bottom: var(--h-mb-quote-line-last);
 				}
 			}
 
@@ -140,7 +161,7 @@ $rgb-inset-border: #656565;
 		}
 
 		&p-list-item {
-			// This prevents e.g. "italic" on the list item name from affecting the list item's text.
+			// This prevents e.g. "italic" on the list item name from affecting the list item"s text.
 			font-style: initial;
 		}
 
@@ -162,12 +183,21 @@ $rgb-inset-border: #656565;
 		}
 
 		&image-title-inner {
-			border-bottom: 1px solid $rgb-border-grey;
-			display: inline;
+			display: inline-block;
+			text-decoration: underline;
+			margin: 2px 0; // Align with map viewer buttons, which are padded + bordered on all sides
 		}
 
 		&image-btn-viewer {
+			// Style the button text to match normal image title labels
 			font-style: initial;
+			white-space: normal;
+			font-size: inherit;
+			line-height: 1.7;
+		}
+
+		&image-credit {
+			font-size: 80%;
 		}
 
 		// Thicker scrollbars for viewer
@@ -194,7 +224,7 @@ $rgb-inset-border: #656565;
 			list-style: none;
 
 			> .rd__li {
-				margin-bottom: 3px;
+				margin-bottom: var(--h-mb-li);
 				text-indent: -1.1em;
 				margin-left: 1.1em;
 
@@ -204,7 +234,7 @@ $rgb-inset-border: #656565;
 				}
 
 				> * {
-					margin: 0 0 3px;
+					margin: 0 0 var(--h-mb-li);
 				}
 
 				// fixme?
@@ -216,6 +246,10 @@ $rgb-inset-border: #656565;
 
 		&list-hang {
 			list-style: none;
+
+			> .rd__list-name {
+				margin-left: calc(-1 * var(--w-pl-list));
+			}
 
 			// Firefox workaround; list bullets are pseudo-elements "::marker"
 			> li > *:not(::marker) {
@@ -232,22 +266,34 @@ $rgb-inset-border: #656565;
 			list-style: lower-roman;
 		}
 
-		&list-no-bullets {
-			list-style: none;
-			padding: 0 10px;
+		&list-upper-roman {
+			list-style: upper-roman;
 		}
 
-		&list-name {
-			margin: 0;
-			font-weight: bold;
+		&list-no-bullets {
+			list-style: none;
+			padding: 0 0 0 var(--w-pl-list-no-bullets);
+
+			> .rd__list-name {
+				margin-left: calc(-1 * var(--w-pl-list-no-bullets));
+			}
+		}
+
+		&list-italic {
+			font-style: italic;
 		}
 
 		// section headers
+		&h {
+			margin: 0;
+			line-height: inherit;
+		}
+
 		// statsBlockSectionHead
 		&h--0 {
 			@include rd__h--large();
 
-			font-size: 1.8em;
+			font-size: var(--sz-font-h0);
 		}
 
 		// underline headers
@@ -255,7 +301,7 @@ $rgb-inset-border: #656565;
 		&h--1 {
 			@include rd__h--large();
 
-			font-size: 1.5em;
+			font-size: var(--sz-font-h1);
 			border-bottom: 1px solid $rgb-name-red;
 			margin: 0 0 0.2em;
 		}
@@ -265,7 +311,7 @@ $rgb-inset-border: #656565;
 		&h--2 {
 			@include rd__h--large();
 
-			font-size: 1.4em;
+			font-size: var(--sz-font-h2);
 		}
 
 		// inset headers
@@ -277,6 +323,11 @@ $rgb-inset-border: #656565;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
+
+			&-no-name {
+				justify-content: flex-end;
+				float: right;
+			}
 		}
 
 		&h--2-flow-block {
@@ -285,6 +336,14 @@ $rgb-inset-border: #656565;
 			font-weight: bolder;
 			font-size: 1.1em;
 			text-align: center;
+		}
+
+		&h--2-inset > h4,
+		&h--2-flow-block > h4 {
+			font-size: inherit;
+			font-weight: inherit;
+			line-height: $font-line-height;
+			margin: 0;
 		}
 
 		// inline headers
@@ -300,9 +359,20 @@ $rgb-inset-border: #656565;
 			font-style: italic;
 		}
 
+		&h-toggle {
+			font-family: Arial, sans-serif;
+			font-size: 12px;
+			opacity: 0.3;
+			font-weight: normal;
+		}
+
+		&ele-toggled-hidden {
+			display: none !important;
+		}
+
 		&b--3 > p,
 		&b--4 > p {
-			text-indent: 0.7em;
+			text-indent: var(--w-text-indent-inline-p);
 			margin-bottom: 0;
 
 			&:first-of-type {
@@ -311,7 +381,7 @@ $rgb-inset-border: #656565;
 		}
 
 		&b-inset > p {
-			text-indent: 0.7em;
+			text-indent: var(--w-text-indent-inline-p);
 			margin-bottom: 0;
 
 			&:first-of-type {
@@ -346,15 +416,27 @@ $rgb-inset-border: #656565;
 		}
 
 		&b-data {
-			box-shadow: 0 0 4px 0 rgb(152, 142, 124);
-			border: 1px solid $rgb-inset-border;
-			background-color: rgba(156, 150, 120, 0.1);
+			border: 3px solid $rgb-border-yellow--statblock;
+			border-left-width: 1px;
+			border-right-width: 1px;
+			margin: 5px;
+			width: calc(100% - 12px);
+
+			&--inset {
+				box-shadow: 0 0 4px 0 rgb(152, 142, 124);
+				border: 1px solid $rgb-inset-border;
+				background-color: rgba(156, 150, 120, 0.1);
+			}
+		}
+
+		&li > .rd__b-data {
+			margin: 0;
 		}
 
 		&data-embed {
 			&-header {
 				cursor: pointer;
-				font-family: 'Andada', serif;
+				font-family: "Times New Roman", serif;
 				font-variant: small-caps;
 				text-transform: uppercase;
 				font-weight: bold;
@@ -390,13 +472,16 @@ $rgb-inset-border: #656565;
 		}
 
 		&table {
+			width: 100%;
+			margin-bottom: var(--h-mb-p);
+
 			> caption {
 				text-align: left;
 			}
 		}
 
 		&comic {
-			font-family: 'Blambot Casual', sans-serif;
+			font-family: "Blambot Casual", sans-serif;
 			color: #1942be;
 
 			&--h1 {
@@ -437,7 +522,7 @@ $rgb-inset-border: #656565;
 				}
 
 				&::after {
-					content: '';
+					content: "";
 					clear: both;
 					display: block;
 				}
@@ -474,7 +559,7 @@ $rgb-inset-border: #656565;
 		}
 
 		&stats-name-page {
-			font-family: 'Convergence', Arial, sans-serif;
+			font-family: "Convergence", Arial, sans-serif;
 			font-size: 12px;
 			color: $rgb-off-black;
 			font-weight: 100;
@@ -492,11 +577,16 @@ $rgb-inset-border: #656565;
 		&highlight {
 			background-color: $rgb-bg-highlight;
 		}
+
+		&color {
+			a {
+				color: inherit !important;
+			}
+		}
 	}
 
 	&-item__ {
 		&type-rarity-attunement {
-			font-style: italic;
 			color: $rgb-off-black;
 		}
 	}
@@ -532,40 +622,49 @@ td > .rd__b:last-child {
 	margin-bottom: 0;
 }
 
-// region Source colors
-.subclass-feature {
-	.rd__h--0,
-	.rd__h--1,
-	.rd__h--2 {
-		color: $rgb-subclass;
-		border-bottom-color: $rgb-subclass;
-	}
-}
+/* ****************************************************************************************************************** */
+/* Entity-specific styling                                                                                            */
+/* ****************************************************************************************************************** */
 
-.spicy-sauce {
-	.rd__h--0,
-	.rd__h--1,
-	.rd__h--2 {
-		color: $rgb-subclass-ua;
-		border-bottom-color: $rgb-subclass-ua;
-	}
-}
+// region Recipes
+.rd-recipes {
+	&__ {
+		&wrp-recipe {
+			.rd__b--3 > p,
+			.rd__b--4 > p {
+				text-indent: 0;
+			}
+		}
 
-.spicy-sauce:not(.subclass-feature):not(.subclass-feature--sub) {
-	.rd__h--0,
-	.rd__h--1,
-	.rd__h--2 {
-		color: $rgb-class-ua;
-		border-bottom-color: $rgb-class-ua;
-	}
-}
+		&wrp-instructions {
+			.rd__h--3 {
+				font-style: initial;
+				font-variant: small-caps;
+			}
 
-.refreshing-brew {
-	.rd__h--0,
-	.rd__h--1,
-	.rd__h--2 {
-		color: $rgb-class-brew;
-		border-bottom-color: $rgb-class-brew;
+			.rd__b--3 > p,
+			.rd__b--4 > p {
+				margin-bottom: 10px;
+			}
+
+			.rd__b--3 > p:nth-of-type(2),
+			.rd__b--4 > p:nth-of-type(2) {
+				margin-top: 10px;
+			}
+		}
+
+		&wrp-ingredients {
+			.rd__h--2 {
+				font-size: 1em;
+				font-family: Roboto, Helvetica, sans-serif;
+				color: inherit;
+				font-weight: bold;
+			}
+
+			.rd__b p {
+				margin-bottom: 0;
+			}
+		}
 	}
 }
 // endregion

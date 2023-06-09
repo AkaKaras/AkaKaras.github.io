@@ -1,11 +1,11 @@
-@import 'vars';
+@import "vars";
 
 // region Fix Chrome
-input[type='checkbox']:checked {
+input[type="checkbox"]:checked {
 	filter: grayscale(100%);
 }
 
-input[type='radio']:checked {
+input[type="radio"]:checked {
 	filter: grayscale(100%);
 }
 // endregion
@@ -16,7 +16,7 @@ input[type='radio']:checked {
 }
 
 .dnd-font {
-	font-family: 'Andada', serif;
+	font-family: "Times New Roman", serif;
 	font-variant: small-caps;
 	font-weight: 500;
 }
@@ -39,6 +39,10 @@ input[type='radio']:checked {
 
 .bold {
 	font-weight: bold !important;
+}
+
+.ve-bolder {
+	font-weight: bolder !important;
 }
 
 .italic {
@@ -81,9 +85,9 @@ i > i {
 }
 
 .text-clip-ellipsis {
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	overflow: hidden;
+	white-space: nowrap !important;
+	text-overflow: ellipsis !important;
+	overflow: hidden !important;
 }
 
 .whitespace-normal {
@@ -94,11 +98,15 @@ i > i {
 	white-space: pre;
 }
 
+.word-break-all {
+	word-break: break-all;
+}
+
 .small-caps {
 	font-variant: small-caps;
 }
 
-.capitalise {
+.capitalize {
 	text-transform: capitalize;
 }
 
@@ -108,12 +116,26 @@ i > i {
 	break-inside: avoid;
 }
 
+.text-left {
+	text-align: left !important;
+}
+
 .text-right {
 	text-align: right !important;
 }
 
 .text-center {
 	text-align: center !important;
+}
+
+.text-rtl {
+	direction: rtl;
+}
+// endregion
+
+// region Transforms
+.trans-x-flip {
+	transform: scaleX(-1) !important;
 }
 // endregion
 
@@ -129,6 +151,10 @@ i > i {
 .copyable {
 	cursor: copy !important;
 }
+
+.ve-draggable {
+	cursor: grab;
+}
 // endregion
 
 // region Events
@@ -136,14 +162,35 @@ i > i {
 	pointer-events: none !important;
 }
 
+.events-initial {
+	pointer-events: initial !important;
+}
+
 .no-select {
 	user-select: none !important;
+}
+
+.user-select-text {
+	user-select: text !important;
+}
+
+.user-select-all {
+	user-select: all !important;
 }
 // endregion
 
 // region Scrolling
 .smooth-scroll {
 	transform: translateZ(0) !important;
+}
+
+.scrollbar-stable {
+	scrollbar-gutter: stable;
+}
+
+.overflow-auto {
+	overflow-x: auto;
+	overflow-y: auto;
 }
 
 .overflow-y-auto {
@@ -176,6 +223,11 @@ i > i {
 
 .overflow-ellipsis {
 	@include overflow-dots();
+}
+
+.overflow-overlay {
+	overflow: auto;
+	overflow: overlay;
 }
 // endregion
 
@@ -255,8 +307,20 @@ i > i {
 	width: 100% !important;
 }
 
+.w-100w {
+	width: 100vw !important;
+}
+
 .w-initial {
 	width: initial !important;
+}
+
+.w-20p {
+	width: 20px !important;
+}
+
+.w-24p {
+	width: 24px !important;
 }
 
 .w-30p {
@@ -271,16 +335,28 @@ i > i {
 	width: 50px !important;
 }
 
+.w-70p {
+	width: 70px !important;
+}
+
 .w-80p {
 	width: 80px !important;
 }
 
-.w-50p {
-	width: 50px !important;
+.w-90p {
+	width: 90px !important;
 }
 
 .w-100p {
 	width: 100px !important;
+}
+
+.w-140p {
+	width: 140px !important;
+}
+
+.w-200p {
+	width: 200px !important;
 }
 
 .w-640p {
@@ -299,6 +375,10 @@ i > i {
 	min-width: 100% !important;
 }
 
+.min-w-20p {
+	min-width: 20px !important;
+}
+
 .min-w-100p {
 	min-width: 100px !important;
 }
@@ -315,8 +395,20 @@ i > i {
 	max-width: 80% !important;
 }
 
+.max-w-100 {
+	max-width: 100% !important;
+}
+
 .max-w-100p {
 	max-width: 100px !important;
+}
+
+.max-w-200p {
+	max-width: 200px !important;
+}
+
+.max-w-300p {
+	max-width: 300px !important;
 }
 
 .max-w-640p {
@@ -325,12 +417,40 @@ i > i {
 // endregion
 
 // region Height
+.h-initial {
+	height: initial !important;
+}
+
+.h-50 {
+	height: 50% !important;
+}
+
 .h-100 {
 	height: 100% !important;
 }
 
+.h-100h {
+	height: 100vh !important;
+}
+
+.h-20p {
+	height: 20px !important;
+}
+
+.h-21p {
+	height: 21px !important;
+}
+
+.h-25p {
+	height: 25px !important;
+}
+
 .h-27p {
 	height: 27px !important;
+}
+
+.h-ipt-xs {
+	height: $h-ipt-xs;
 }
 
 // Often useful as a hack to force flexbox to behave
@@ -349,6 +469,10 @@ i > i {
 .max-h-40 {
 	max-height: 40% !important;
 }
+
+.max-h-unset {
+	max-height: unset !important;
+}
 // endregion
 
 // region Position
@@ -358,6 +482,10 @@ i > i {
 
 .absolute {
 	position: absolute !important;
+}
+
+.sticky {
+	position: sticky !important;
 }
 // endregion
 
@@ -378,95 +506,99 @@ i > i {
 	display: inline !important;
 }
 
-.inline-flex {
+.ve-inline-flex {
 	display: inline-flex !important;
 }
 
-.flex {
+.ve-flex {
 	display: flex !important;
 }
 
-.flex-col {
+.ve-flex-col {
 	display: flex !important;
 	flex-direction: column !important;
 }
 
-.flex-v-center {
+.ve-flex-v-center {
 	display: flex !important;
 	align-items: center !important;
 }
 
+.ve-inline-flex-v-center {
+	display: inline-flex !important;
+	align-items: center !important;
+}
 
-.flex-v-top {
+.ve-flex-v-top {
 	display: flex;
 	align-items: flex-start;
 }
 
-.flex-v-baseline {
+.ve-flex-v-baseline {
 	display: flex !important;
 	align-items: baseline !important;
 }
 
-.flex-v-end {
+.ve-flex-v-end {
 	display: flex !important;
 	align-items: flex-end !important;
 }
 
-.flex-v-stretch {
+.ve-flex-v-stretch {
 	display: flex !important;
 	align-items: stretch !important;
 }
 
-.flex-h-center {
+.ve-flex-h-center {
 	display: flex !important;
 	justify-content: center !important;
 }
 
-.flex-h-right {
+.ve-flex-h-right {
 	display: flex !important;
 	justify-content: flex-end !important;
 }
 
-.flex-vh-center {
+.ve-flex-vh-center {
 	display: flex !important;
 	align-items: center !important;
 	justify-content: center !important;
 }
 
-.flex-vh-center-around {
+.ve-flex-vh-center-around {
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
 }
 
-.flex-inline-col {
+.ve-flex-inline-col {
 	display: inline-flex !important;
 	flex-direction: column !important;
 }
 
-.flex-inline-v-center {
+.ve-flex-inline-v-center {
 	display: inline-flex !important;
 	align-items: center !important;
 	justify-content: center !important;
 }
 
-.self-flex-start {
+.ve-self-flex-start {
 	align-self: flex-start !important;
 }
 
-.self-flex-center {
+.ve-self-flex-center {
 	align-self: center !important;
 }
 
-.self-flex-end {
+.ve-self-flex-end {
 	align-self: flex-end !important;
 }
 
-.self-flex-stretch {
+.ve-self-flex-stretch {
 	align-self: stretch !important;
 }
 
-.flex-fill {
+.ve-flex-fill {
 	flex-basis: 100%;
 }
 
@@ -482,27 +614,27 @@ i > i {
 	flex-grow: 0 !important;
 }
 
-.flex-1 {
+.ve-flex-1 {
 	flex: 1 !important;
 }
 
-.flex-2 {
+.ve-flex-2 {
 	flex: 2 !important;
 }
 
-.flex-3 {
+.ve-flex-3 {
 	flex: 3 !important;
 }
 
-.flex-4 {
+.ve-flex-4 {
 	flex: 4 !important;
 }
 
-.flex-5 {
+.ve-flex-5 {
 	flex: 5 !important;
 }
 
-.flex-wrap {
+.ve-flex-wrap {
 	display: flex !important;
 	flex-wrap: wrap !important;
 }
@@ -551,6 +683,7 @@ i > i {
 .columns-2 {
 	column-count: 2;
 	break-inside: avoid-column;
+	column-gap: 1.75rem;
 
 	> * {
 		break-inside: avoid-column;
@@ -564,6 +697,7 @@ i > i {
 .columns-3 {
 	column-count: 3;
 	break-inside: avoid-column;
+	column-gap: 1.75rem;
 
 	> * {
 		break-inside: avoid-column;
@@ -581,6 +715,7 @@ i > i {
 .columns-4 {
 	column-count: 4;
 	break-inside: avoid-column;
+	column-gap: 1.75rem;
 
 	> * {
 		break-inside: avoid-column;
@@ -598,6 +733,7 @@ i > i {
 .columns-5 {
 	column-count: 5;
 	break-inside: avoid-column;
+	column-gap: 1.75rem;
 
 	> * {
 		break-inside: avoid-column;
@@ -615,6 +751,7 @@ i > i {
 .columns-6 {
 	column-count: 6;
 	break-inside: avoid-column;
+	column-gap: 1.75rem;
 
 	> * {
 		break-inside: avoid-column;
@@ -651,6 +788,12 @@ i > i {
 
 .border-dotted {
 	border-style: dotted !important;
+}
+// endregion
+
+// region Opacity
+.opacity-50 {
+	opacity: 0.5 !important;
 }
 // endregion
 

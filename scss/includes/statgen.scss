@@ -1,11 +1,11 @@
-@import 'vars';
+@import "vars";
 
 .statgen .statgen { // (Class namespace to enable selectors in FVTT)
 	&-shared__ {
 		&btn-reset {
 			right: -3px;
-			width: 22px;
-			height: 22px;
+			width: $h-ipt-xs;
+			height: $h-ipt-xs;
 		}
 
 		&ipt {
@@ -54,7 +54,7 @@
 		}
 
 		&header {
-			height: 22px;
+			height: $h-ipt-xs;
 
 			&--group {
 				border-bottom: 1px solid $rgb-border-grey--trans;

@@ -1,4 +1,4 @@
-@import 'vars';
+@import "vars";
 
 .clickable {
 	&--link {
@@ -38,6 +38,14 @@
 
 		&--faint:nth-child(odd) {
 			background: $rgb-stripe-grey--faint;
+		}
+	}
+
+	&child- {
+		&even-first {
+			&:nth-child(even) > :first-child {
+				background: $rgb-stripe-grey;
+			}
 		}
 	}
 }

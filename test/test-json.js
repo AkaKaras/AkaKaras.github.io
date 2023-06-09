@@ -1,212 +1,57 @@
-const fs = require("fs");
-require("../js/utils");
-const Ajv = require("ajv").default;
+import * as fs from "fs";
 
-// region Set up validator
-const ajv = new Ajv({
-	allowUnionTypes: true,
-});
+import {Um, Uf, JsonTester} from "5etools-utils";
 
-ajv.addKeyword({
-	keyword: "version",
-	validate: false,
-});
+const LOG_TAG = "JSON";
+const _IS_FAIL_SLOW = !!process.env.FAIL_SLOW;
 
-const DATE_REGEX = /^\d\d\d\d-\d\d-\d\d$/;
-ajv.addFormat(
-	"date",
-	{
-		validate: (str) => DATE_REGEX.test(str),
-	},
-);
-// endregion
-
-function loadJSON (file) {
-	const data = fs.readFileSync(file, "utf8")
-		.replace(/^\uFEFF/, ""); // strip BOM
-	return JSON.parse(data);
-}
-
-function handleError () {
-	const out = JSON.stringify(ajv.errors, null, 2);
-	console.error(out);
-	console.warn(`Tests failed`);
-	fs.writeFileSync("../log-test-json.json", out, "utf-8");
-	return false;
-}
-
-// add any implicit data to the JSON
-function addImplicits (obj, lastKey) {
-	if (typeof obj === "object") {
-		if (obj == null) return;
-		if (obj instanceof Array) obj.forEach(d => addImplicits(d, lastKey));
-		else {
-			// "obj.mode" will be set if this is in a "_copy" etc block
-			if (lastKey === "spellcasting" && !obj.mode) obj.type = obj.type || "spellcasting";
-
-			Object.entries(obj).forEach(([k, v]) => addImplicits(v, k));
-		}
-	}
-}
-
-function preprocess (schema) {
-	function deepMerge (a, b) {
-		if (typeof a !== "object" || typeof b !== "object") return;
-		if ((a instanceof Array && !(b instanceof Array)) || (!(a instanceof Array) && b instanceof Array)) return console.warn(`Could not merge:\n${JSON.stringify(a)}\n${JSON.stringify(b)}`);
-
-		const bKeys = new Set(Object.keys(b));
-		Object.keys(a).forEach(ak => {
-			if (bKeys.has(ak)) {
-				const av = a[ak];
-				const bv = b[ak];
-
-				const bType = typeof bv;
-
-				switch (bType) {
-					case "boolean":
-					case "number":
-					case "string": a[ak] = bv; break; // if we have a primitive, overwrite
-					case "object": {
-						if (bv instanceof Array) a[ak] = bv; // if we have an array, overwrite
-						else deepMerge(av, bv); // otherwise, go deeper
-						break;
-					}
-					default: throw new Error(`Impossible!`);
-				}
-
-				bKeys.delete(ak); // mark key as merged
-			}
-		});
-		// any properties in B that aren't in A simply get added to A
-		bKeys.forEach(bk => a[bk] = b[bk]);
-	}
-
-	function findReplace$$Merge (obj) {
-		if (typeof obj === "object") {
-			if (obj instanceof Array) return obj.map(d => findReplace$$Merge(d));
-			else {
-				Object.entries(obj).forEach(([k, v]) => {
-					if (k === "$$merge") {
-						const merged = {};
-						v.forEach(toMerge => {
-							// handle any mergeable children
-							toMerge = findReplace$$Merge(toMerge);
-							// resolve references
-							toMerge = (() => {
-								if (!toMerge.$ref) return toMerge;
-								else {
-									const [file, path] = toMerge.$ref.split("#");
-									const pathParts = path.split("/").filter(Boolean);
-
-									let refData;
-									if (file) {
-										const externalSchema = loadJSON(file);
-										refData = MiscUtil.get(externalSchema, ...pathParts);
-									} else {
-										refData = MiscUtil.get(schema, ...pathParts);
-									}
-
-									if (!refData) throw new Error(`Could not find referenced data!`);
-									return refData;
-								}
-							})();
-							// merge
-							deepMerge(merged, toMerge);
-						});
-						delete obj[k];
-						deepMerge(obj, merged);
-					} else obj[k] = findReplace$$Merge(v);
-				});
-				return obj;
-			}
-		} else return obj;
-	}
-	findReplace$$Merge(schema);
-	return schema;
-}
+const _GENERATED_ALLOWLIST = new Set([
+	"bookref-quick.json",
+	"gendata-spell-source-lookup.json",
+]);
 
 async function main () {
-	console.log(`##### Validating JSON against schemata #####`);
+	const jsonTester = new JsonTester({
+		tagLog: LOG_TAG,
+		fnGetSchemaId: (filePath) => {
+			const relativeFilePath = filePath.replace("data/", "");
 
-	// a probably-unnecessary directory shift to ensure the JSON schema internal references line up
-	const cacheDir = process.cwd();
-	process.chdir(`${cacheDir}/test/schema`);
+			if (relativeFilePath.startsWith("adventure/")) return "adventure/adventure.json";
+			if (relativeFilePath.startsWith("book/")) return "book/book.json";
 
-	const PRELOAD_SINGLE_FILE_SCHEMAS = [
-		"trapshazards.json",
-		"objects.json",
-		"items.json",
-	];
+			if (relativeFilePath.startsWith("bestiary/bestiary-")) return "bestiary/bestiary.json";
+			if (relativeFilePath.startsWith("bestiary/fluff-bestiary-")) return "bestiary/fluff-bestiary.json";
 
-	ajv.addSchema(preprocess(loadJSON("spells/spells.json", "utf8")), "spells.json");
-	ajv.addSchema(preprocess(loadJSON("bestiary/bestiary.json", "utf8")), "bestiary.json");
-	PRELOAD_SINGLE_FILE_SCHEMAS.forEach(schemaName => {
-		ajv.addSchema(preprocess(loadJSON(schemaName, "utf8")), schemaName);
-	})
-	ajv.addSchema(preprocess(loadJSON("entry.json", "utf8")), "entry.json");
-	ajv.addSchema(preprocess(loadJSON("util.json", "utf8")), "util.json");
+			if (relativeFilePath.startsWith("class/class-")) return "class/class.json";
 
-	// Get schema files, ignoring directories
-	const schemaFiles = fs.readdirSync(`${cacheDir}/test/schema`)
-		.filter(file => file.endsWith(".json"));
+			if (relativeFilePath.startsWith("spells/spells-")) return "spells/spells.json";
+			if (relativeFilePath.startsWith("spells/fluff-spells-")) return "spells/fluff-spells.json";
 
-	const SCHEMA_BLACKLIST = new Set(["entry.json", "util.json"]);
+			return relativeFilePath;
+		},
+	});
 
-	for (let i = 0; i < schemaFiles.length; ++i) {
-		const schemaFile = schemaFiles[i];
-		if (!SCHEMA_BLACKLIST.has(schemaFile)) {
-			const dataFile = schemaFile; // data and schema filenames match
+	const fileList = Uf.listJsonFiles("data")
+		.filter(filePath => {
+			if (filePath.includes("data/generated")) return _GENERATED_ALLOWLIST.has(filePath.split("/").at(-1));
+			return true;
+		});
 
-			console.log(`Testing data/${dataFile}`.padEnd(50), `against schema/${schemaFile}`);
+	const results = await jsonTester.pGetErrorsOnDirsWorkers({
+		isFailFast: !_IS_FAIL_SLOW,
+		fileList,
+	});
 
-			const data = loadJSON(`${cacheDir}/data/${dataFile}`);
-			// Avoid re-adding schemas we have already loaded
-			if (!PRELOAD_SINGLE_FILE_SCHEMAS.includes(schemaFile)) {
-				const schema = loadJSON(schemaFile, "utf8");
-				ajv.addSchema(preprocess(schema), schemaFile);
-			}
+	const {errors, errorsFull} = results;
 
-			addImplicits(data);
-			const valid = ajv.validate(schemaFile, data);
-			if (!valid) return handleError(valid);
-		}
+	if (errors.length) {
+		if (!process.env.CI) fs.writeFileSync(`test/test-json.error.log`, errorsFull.join("\n\n=====\n\n"));
+		console.error(`Schema test failed (${errors.length} failure${errors.length === 1 ? "" : "s"}).`);
+		return false;
 	}
 
-	// Get schema files in directories
-	const schemaDirectories = fs.readdirSync(`${cacheDir}/test/schema`)
-		.filter(category => !category.endsWith(".json"));
-
-	for (let i = 0; i < schemaDirectories.length; ++i) {
-		const schemaDir = schemaDirectories[i];
-		console.log(`Testing category ${schemaDir}`);
-		const schemaFiles = fs.readdirSync(`${cacheDir}/test/schema/${schemaDir}`);
-
-		const dataFiles = fs.readdirSync(`${cacheDir}/data/${schemaDir}`);
-		for (let i = 0; i < dataFiles.length; ++i) {
-			const dataFile = dataFiles[i];
-
-			const relevantSchemaFiles = schemaFiles.filter(schema => dataFile.startsWith(schema.split(".")[0]));
-			for (let i = 0; i < relevantSchemaFiles.length; ++i) {
-				const schemaFile = relevantSchemaFiles[i];
-
-				console.log(`Testing data/${schemaDir}/${dataFile}`.padEnd(50), `against schema/${schemaDir}/${schemaFile}`);
-
-				const data = loadJSON(`${cacheDir}/data/${schemaDir}/${dataFile}`);
-				const schema = loadJSON(`${cacheDir}/test/schema/${schemaDir}/${schemaFile}`, "utf8");
-				// only add the schema if we didn't do so already for this category
-				if (!ajv.getSchema(schemaFile)) ajv.addSchema(preprocess(schema), schemaFile);
-
-				addImplicits(data);
-				const valid = ajv.validate(schemaFile, data);
-				if (!valid) return handleError(valid);
-			}
-		}
-	}
-
-	console.log(`All schema tests passed.`);
-	process.chdir(cacheDir); // restore working directory
-
+	Um.info(LOG_TAG, `All schema tests passed.`);
 	return true;
 }
 
-module.exports = main();
+export default main();

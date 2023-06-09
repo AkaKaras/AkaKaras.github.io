@@ -1,4 +1,4 @@
-@import 'vars';
+@import "vars";
 
 .night-mode .fltr {
 	$flt-ignore: $rgb-bg--night;
@@ -124,6 +124,20 @@
 			&:hover {
 				color: $rgb-active-red--light;
 			}
+		}
+	}
+
+	&-search__ {
+		&wrp-row {
+			&:focus,
+			&:hover {
+				background-color: lighten($rgb-bg--night, 2%);
+			}
+		}
+
+		&wrp-values {
+			background-color: $rgb-bg--night;
+			border-color: $rgb-border-grey--night;
 		}
 	}
 

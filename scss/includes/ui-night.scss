@@ -2,7 +2,7 @@
 Shared UI components
  */
 
-@import 'vars';
+@import "vars";
 
 /* region Misc/Shared */
 .night-mode .ui__ {
@@ -105,6 +105,8 @@ Shared UI components
 	&wrp-tab-body {
 		&--background {
 			background: $rgb-bg--night;
+			border-color: $rgb-border-grey--trans-night;
+			border-bottom-color: darken($rgb-border-grey--trans-night, 15%);
 		}
 	}
 
@@ -131,16 +133,16 @@ Shared UI components
 			@include shadow-active--night();
 		}
 
-		&[data-state='0'] {
+		&[data-state="0"] {
 			background: $rgb-bg--night;
 		}
 
-		&[data-state='1'] {
+		&[data-state="1"] {
 			background: $rgb-border-grey--night;
 			border-color: lighten($rgb-border-grey--night, 10%);
 		}
 
-		&[data-state='2'] {
+		&[data-state="2"] {
 			background: $rgb-border-grey--night;
 			border-color: lighten($rgb-border-grey--night, 10%);
 
@@ -149,7 +151,7 @@ Shared UI components
 			}
 		}
 
-		&[data-state='3'] {
+		&[data-state="3"] {
 			background: repeating-linear-gradient(135deg, $rgb-bg--night, $rgb-bg--night 10px, $rgb-border-grey--night 10px, $rgb-border-grey--night 20px);
 			border-color: lighten($rgb-border-grey--night, 10%);
 		}
@@ -192,7 +194,7 @@ Shared UI components
 		background: $rgb-border-grey--night;
 	}
 
-	&__row {
+	&__btn {
 		&:hover {
 			background: $rgb-bg--alt-night;
 			color: white;
@@ -213,6 +215,14 @@ Shared UI components
 		&disp-text {
 			border-color: $rgb-border-grey--night;
 		}
+	}
+}
+/* endregion */
+
+/* region "Copied" tooltip */
+.night-mode .clp__ {
+	&disp-copied {
+		background: radial-gradient(ellipse at center, $rgb-bg--night 0%, $rgb-bg--night 35%, transparent 75%, transparent 100%);
 	}
 }
 /* endregion */
