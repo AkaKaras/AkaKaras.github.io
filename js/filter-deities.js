@@ -43,18 +43,19 @@ class PageFilterDeities extends PageFilter {
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
 			headerName: "杂项",
-			items: ["Grants Piety Features", "Has Info", PageFilterDeities._STR_REPRINTED, "SRD"],
+			items: ["Grants Piety Features", "Has Info", "Reprinted", "SRD", "Basic Rules"],
 			displayFn: (it) => {
 				switch (it) {
 					case "Grants Piety Features": return "提供虔诚特性";
 					case "Has Info": return "包含信息";
-					case PageFilterDeities._STR_REPRINTED: return "重印";
+					case "Reprinted": return "重印";
 					case "SRD": return "SRD";
+					case "Basic Rules": return "基础规则"
 					default: return it;
 				}
 			},
-			deselFn: (it) => { return it === PageFilterDeities._STR_REPRINTED },
-			isSrdFilter: true,
+			deselFn: (it) => it === "Reprinted",
+			isMiscFilter: true,
 		});
 	}
 
@@ -64,8 +65,10 @@ class PageFilterDeities extends PageFilter {
 		if (!g.domains) g.domains = [VeCt.STR_NONE];
 		g.domains.sort(SortUtil.ascSort);
 
-		g._fMisc = g.reprinted ? [PageFilterDeities._STR_REPRINTED] : [];
+		g._fMisc = [];
+		if (g.reprinted) g._fMisc.push("Reprinted");
 		if (g.srd) g._fMisc.push("SRD");
+		if (g.basicRules) g._fMisc.push("Basic Rules");
 		if (g.entries || g.symbolImg) g._fMisc.push("Has Info");
 		if (g.piety) g._fMisc.push("Grants Piety Features");
 	}
@@ -99,7 +102,8 @@ class PageFilterDeities extends PageFilter {
 			g.category,
 			g.domains,
 			g._fMisc,
-		)
+		);
 	}
 }
-PageFilterDeities._STR_REPRINTED = "reprinted";
+
+globalThis.PageFilterDeities = PageFilterDeities;
